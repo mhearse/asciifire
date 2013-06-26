@@ -14,13 +14,16 @@ This algorithm was ported from javascript written by: Thiemo Mattig
 http://maettig.com/code/javascript/asciifire.html
 
 """
-
-import sys
-import curses
-import optparse
-from random import random
-from time import time, sleep
-from signal import signal, SIGINT
+try:
+    import curses
+    import optparse
+    from sys import exit
+    from random import random
+    from time import time, sleep
+    from signal import signal, SIGINT
+except ImportError, err:
+    print "Error Importing module. %s" % (err)
+    exit(1)
 
 ##############################################
 def get_options():
@@ -90,7 +93,7 @@ def get_options():
 def signal_handler(signal, frame):
 ##############################################
     curses.endwin()
-    sys.exit(0)
+    exit(0)
 
 ##############################################
 if __name__=='__main__':
