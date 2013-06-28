@@ -185,8 +185,8 @@ if __name__=='__main__':
                 tmplist = []
 
         # Starting coordinates. Need to programatically determine center.
-        x = 25
-        y = 5
+        x = 0
+        y = 0
 
         # Clear curses buffer.
         myscreen.erase()
@@ -205,7 +205,7 @@ if __name__=='__main__':
 
             # We're at the end of a row, update x/y for the next row.
             y += 1
-            x = 10
+            x = 0
 
 
         # Draw/blit curses buffer to screen.
@@ -229,15 +229,3 @@ if __name__=='__main__':
 
     # De-initialize curses, and return terminal to normal status.
     curses.endwin()
-
-# TODO
-# add error handling to gracefully exit (endwin) if things break
-# validate options.deply...
-# (maxX, maxY) = myscreen.getmaxyx() at start and before every blit
-# 29 89
-# print instructions at bottowm q : quit p : pause
-
-# FIGURE OUT WHY TOP LINE IS SHIFTED TO THE RIGHT
-# PLACE ASCII ART INTO A BORDERED WINDOW
-# ENSURE WINDOW IS CENTERED
-# ENSURE CODE WORKS ON STANDARD TERMINAL SIZE
