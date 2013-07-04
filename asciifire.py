@@ -14,6 +14,7 @@ This algorithm was ported from javascript written by: Thiemo Mattig
 http://maettig.com/code/javascript/asciifire.html
 
 """
+
 try:
     import curses
     import optparse
