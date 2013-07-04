@@ -108,7 +108,8 @@ if __name__=='__main__':
     # Disable line buffering.
     curses.cbreak()
     # Hide cursor.
-    curses.curs_set(0)
+    if curses.has_colors():
+        curses.curs_set(0)
 
     # This variable allows dynamic curses colors.
     cursescolor = options.validcolors.get(options.color)
