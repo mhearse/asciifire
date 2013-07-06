@@ -154,6 +154,7 @@ if __name__=='__main__':
 
     # Infinite loop.
     while True:
+        # Process human's input.
         event = myscreen.getch()
         if event == ord('q'):
             # q means human wants to quit.
@@ -166,6 +167,13 @@ if __name__=='__main__':
             else:
                 myscreen.timeout(0)
                 paused = False
+
+        # Check window size.
+        [max_y, max_x] = myscreen.getmaxyx()
+        if max_y < 25 or max_x < 80:
+            curses.endwin()
+            print 'Screen too small.  Must be at least 80x25'
+            exit(2)
 
         for i in range(10):
             # random() returns a float.
