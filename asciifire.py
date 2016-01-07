@@ -19,11 +19,11 @@ try:
     import curses
     import optparse
     from sys import exit
-    from random import random
+    from random import randint
     from time import time, sleep
     from signal import signal, SIGINT
-except ImportError, err:
-    print "Error Importing module. %s" % (err)
+except ImportError as err:
+    print("Error Importing module. %s" % (err))
     exit(1)
 
 ##############################################
@@ -153,6 +153,7 @@ if __name__=='__main__':
     paused = False
 
     # Infinite loop.
+    max_y, max_x = None, None
     while True:
         # Process human's input.
         event = myscreen.getch()
@@ -167,28 +168,23 @@ if __name__=='__main__':
             else:
                 myscreen.timeout(0)
                 paused = False
-
-        # Check window size.
-        [max_y, max_x] = myscreen.getmaxyx()
-        if max_y < 25 or max_x < 80:
-            curses.endwin()
-            print 'Screen too small.  Must be at least 80x25'
-            exit(2)
+        if event == curses.KEY_RESIZE or max_y == None:
+            # Check window size.
+            max_y, max_x = myscreen.getmaxyx()
+            if max_y < 25 or max_x < 80:
+                curses.endwin()
+                print('Screen too small.  Must be at least 80x25')
+                exit(2)
 
         for i in range(10):
-            # random() returns a float.
-            randval = random() * 80
-            # Typecasting to int does a floor().
-            b[int(randval) + 80 * 24] = 70
+            randval = randint(0, 79)
+            b[randval + 80 * 24] = 70
 
         # a is a two deminsional list.
         a = []
         tmplist = []
         for i in range(size):
-            # Purposefully typecast rval as float.
-            tmp = float((b[i] + b[i + 1] + b[i + 80] + b[i + 81]) / 4)
-            # Typecasting to int does a floor().
-            b[i] = int(tmp)
+            b[i] = (b[i] + b[i + 1] + b[i + 80] + b[i + 81]) // 4
 
             if b[i] > 7:
                 tmplist.append(char[7])
