@@ -3,7 +3,7 @@ asciifire
 
 ASCII art animated fire
 
-This algorithm was ported from javascript written by: Thiemo Mattig
+The algorithm used was ported from javascript written by: Thiemo Mattig
 http://maettig.com/code/javascript/asciifire.html
 
 Click image for video
