@@ -8,4 +8,4 @@ http://maettig.com/code/javascript/asciifire.html
 
 Click image for video
 
-[![Click image for video](https://github.com/mhearse/asciifire/blob/master/screenshots/ascii_fire.png)](https://youtu.be/1gKk89nYicI)
+![](https://github.com/mhearse/asciifire/blob/master/screenshots/Screencast-2017.07.31-07.17.gif)
